@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useSearchParams } from 'react-router-dom';
 import { STORIES } from '../constants';
 import { Story } from '../types';
 import { ArrowRight, BookOpen, Filter, X } from 'lucide-react';
@@ -111,8 +112,24 @@ const StoryModal = ({ story, onClose }: { story: Story; onClose: () => void }) =
 };
 
 export const StoriesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState<'Todos' | 'Transportes' | 'Materiais'>('Todos');
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+
+  useEffect(() => {
+    const storyId = searchParams.get('story');
+    if (storyId) {
+      const story = STORIES.find(s => s.id === storyId);
+      if (story) {
+        setSelectedStory(story);
+      }
+    }
+  }, [searchParams]);
+
+  const handleCloseModal = () => {
+    setSelectedStory(null);
+    setSearchParams({});
+  };
 
   const filteredStories = STORIES.filter(s => filter === 'Todos' || s.category === filter);
 
@@ -176,7 +193,7 @@ export const StoriesPage = () => {
         {selectedStory && (
           <StoryModal 
             story={selectedStory} 
-            onClose={() => setSelectedStory(null)} 
+            onClose={handleCloseModal} 
           />
         )}
       </AnimatePresence>

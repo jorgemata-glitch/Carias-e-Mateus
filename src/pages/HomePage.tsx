@@ -6,16 +6,16 @@ import { SERVICES, STORIES } from '../constants';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-primary">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://storage.googleapis.com/static.ais.studio/user-uploads/guerradamata@gmail.com/1742752523277-image.png" 
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000" 
           alt="Instalações e frota da Carias & Mateus" 
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/30" />
       </div>
 
       <div className="section-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -133,25 +133,30 @@ const StorytellingPreview = () => {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               {STORIES.slice(0, 2).map((story, idx) => (
-                <motion.div
-                  key={story.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.2 }}
-                  className="relative aspect-[3/4] rounded-2xl overflow-hidden group"
+                <Link 
+                  key={story.id} 
+                  to={`/storytelling?story=${story.id}`}
+                  className="block"
                 >
-                  <img 
-                    src={story.image} 
-                    alt={story.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                    <span className="text-[10px] uppercase tracking-widest text-accent font-bold mb-2">{story.category}</span>
-                    <h4 className="text-lg font-bold leading-tight">{story.title}</h4>
-                  </div>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.2 }}
+                    className="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer"
+                  >
+                    <img 
+                      src={story.image} 
+                      alt={story.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                      <span className="text-[10px] uppercase tracking-widest text-accent font-bold mb-2">{story.category}</span>
+                      <h4 className="text-lg font-bold leading-tight">{story.title}</h4>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
             {/* Decorative element */}

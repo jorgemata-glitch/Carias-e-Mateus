@@ -34,7 +34,7 @@ export const STORIES: Story[] = [
     ],
     closing: 'No transporte moderno, a padronização e a inovação são os motores que mantêm a economia global em movimento.',
     source: 'Inspirado na história de Malcom McLean (1956)',
-    image: 'https://images.unsplash.com/photo-1494412574743-019475a77671?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'betao-romano',
