@@ -1,0 +1,7 @@
+{
+  "name": "Carias & Mateus - Transportes e Materiais de Construção",
+  "description": "Website moderno e acessível para a Carias & Mateus, especializada em transportes e materiais de construção. Inclui hub de storytelling industrial e formulário de contacto otimizado.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
