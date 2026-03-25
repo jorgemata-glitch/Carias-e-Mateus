@@ -10,7 +10,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000" 
+          src="https://i.postimg.cc/NfXCCZgp/carias-hero1.png" 
           alt="Instalações e frota da Carias & Mateus" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
